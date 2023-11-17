@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SwiperModule } from 'swiper/angular';
 
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatInputModule } from '@angular/material/input';
 import { DatePipe } from '../core/common/pipes/date.pipe';
 import { CardPrincipalComponent } from '../theme/components/card-principal/card-principal.component';
 import { CarouselComponent } from '../theme/components/carousel/carousel.component';
@@ -11,11 +13,13 @@ import { HomeComponent } from './home/home.component';
 import { LoadingComponent } from './loading/loading.component';
 import { MarsWeatherPanelComponent } from './mars-weather-panel/mars-weather-panel.component';
 import { PagesRoutingModule } from './pages-routing.module';
+import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 
 @NgModule({
   declarations: [
     LoadingComponent,
     MarsWeatherPanelComponent,
+    UnsubscribeComponent,
     LogoutComponent,
     HomeComponent,
     PageTitleComponent,
@@ -23,6 +27,6 @@ import { PagesRoutingModule } from './pages-routing.module';
     CarouselComponent,
     DatePipe,
   ],
-  imports: [CommonModule, PagesRoutingModule, SwiperModule ],
+  imports: [CommonModule, PagesRoutingModule, SwiperModule, ReactiveFormsModule, MatInputModule ],
 })
 export class PagesModule {}
