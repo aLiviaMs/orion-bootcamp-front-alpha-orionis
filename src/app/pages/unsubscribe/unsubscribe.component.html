@@ -1,75 +1,7 @@
-<div class="unsubscribe-form">
+<div class="newsletter-feedback">
   <app-page-title
-    class="info-panel"
     [title]="'Você já vai?'"
-    [subtitle]="'Que pena que você está partindo. Esperamos que suas viagens tenham sido excepcionais.'"
+    [subtitle]="'Você foi descadastrado da nossa newsletter'"
   >
   </app-page-title>
-  <div class="form-components" [formGroup]="formUnsubscribe">
-    <mat-form-field appearance="outline" class="email-input">        
-      <mat-label>Nome Completo</mat-label>
-      <input 
-        matInput 
-        formControlName="nome"
-      >
-    </mat-form-field>
-    <mat-error 
-      class="input-error" 
-      *ngIf="formUnsubscribe.get('nome')?.invalid && formUnsubscribe.get('nome')?.dirty"
-    >
-      Esse campo é obrigatório!
-    </mat-error>
-
-    <mat-form-field appearance="outline" class="email-input">        
-      <mat-label>E-mail</mat-label>
-      <input 
-        matInput 
-        formControlName="email"
-      >
-    </mat-form-field>
-    <mat-error 
-      class="input-error" 
-      *ngIf="formUnsubscribe.get('email')?.invalid && formUnsubscribe.get('email')?.dirty"
-    >
-      Esse campo é obrigatório!
-    </mat-error> 
-
-    <mat-form-field appearance="outline" class="email-input">        
-      <mat-label>Porque voce quer cancelar a newsletter?</mat-label>
-      <input 
-        matInput 
-        formControlName="reasonInput"
-      >
-    </mat-form-field>
-    <mat-error 
-      class="input-error" 
-      *ngIf="formUnsubscribe.get('reasonInput')?.invalid && formUnsubscribe.get('reasonInput')?.dirty"
-    >
-      Esse campo é obrigatório!
-    </mat-error>
-
-    <mat-form-field appearance="outline" class="email-input">        
-      <mat-label>Deixe um feedback para nós</mat-label>
-      <input 
-        matInput 
-        formControlName="feedbackInput"
-      >
-    </mat-form-field>
-    <mat-error 
-      class="input-error" 
-      *ngIf="formUnsubscribe.get('feedbackInput')?.invalid && formUnsubscribe.get('feedbackInput')?.dirty"
-    >
-      Esse campo é obrigatório!
-    </mat-error>
-
-    <button
-        mat-flat-button
-        color="primary"
-        [disabled]="formUnsubscribe.invalid"
-        [class]="formUnsubscribe.invalid ? 'send-btn invalid-btn' : 'send-btn valid-btn'"
-        (click)="unsubBtn()"
-    >
-        CONFIRMAR
-    </button>
-  </div>
 </div>

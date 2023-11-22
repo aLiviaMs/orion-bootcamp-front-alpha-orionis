@@ -1,61 +1,6 @@
-@import '../../theme/styles/theme.scss';
-
-@import '../../theme/styles/colors.scss';
-
-.unsubscribe-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 50px;
-
-}
-
-.info-panel {
-    margin-left: 2%;
-    margin-bottom: 2%;
-    width: 70%;
-    height: 70%;
-}
-
-.form-components {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    height: 70%;
-}
-
-::ng-deep mat-form-field,
-.errors {
-    width: 100%;
-    margin-top: 10px;
-}
-
-.input-error {
-    width: 100%;
-    margin-top: -2%;
-    margin-left: 1%;
-}
-
-.send-btn {
-    width: 100%;
-    border: none;
-    padding: 1.2rem 0.3rem;
-    border-radius: 5px;
-    box-shadow: 0px 0px;
-    color: $white;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.valid-btn {
-    background: $primary-500;
-}
-
-.valid-btn:hover {
-    background: $primary-300;
-    cursor: pointer;
+.newsletter-feedback {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
