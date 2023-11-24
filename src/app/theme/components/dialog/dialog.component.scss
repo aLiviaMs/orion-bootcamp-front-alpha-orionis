@@ -59,9 +59,9 @@ mat-stroked-button {
   padding: 10px 8px;
 }
 
-::ng-deep .mat-mdc-button-persistent-ripple {
-  border: 1px solid black;
-}
+//::ng-deep .mat-mdc-button-persistent-ripple {
+//  border: 1px solid black;
+//}
 
 ::ng-deep.mdc-button__label {
   color: $black;
