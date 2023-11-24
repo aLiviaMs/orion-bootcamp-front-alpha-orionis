@@ -11,25 +11,33 @@
 
 .image-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
 .check-success {
-  width: 69px;
-  height: 69px;
-  padding-left: 35px;
+  width: 100px;
+  height: 100px;
 }
 
 .icon-close {
-  background-image: url(../../../../assets/images/icon-close.png);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
   display: flex;
-  width: 31px;
-  height: 32px;
-  padding-bottom: 0px;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.icon-close svg {
+  width: 20px;
+  height: 20px;
 }
 
 p {

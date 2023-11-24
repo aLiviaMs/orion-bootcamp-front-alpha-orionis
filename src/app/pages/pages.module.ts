@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SwiperModule } from 'swiper/angular';
 
-import { ReactiveFormsModule } from "@angular/forms";
-import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { DatePipe } from '../core/common/pipes/date.pipe';
 import { CardPrincipalComponent } from '../theme/components/card-principal/card-principal.component';
+import { CardHomeComponent } from '../theme/components/cards-home/card-home.component';
 import { CarouselComponent } from '../theme/components/carousel/carousel.component';
 import { LogoutComponent } from '../theme/components/logout/logout.component';
 import { PageTitleComponent } from '../theme/components/page-title/page-title.component';
@@ -24,9 +25,11 @@ import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
     HomeComponent,
     PageTitleComponent,
     CardPrincipalComponent,
+    CardHomeComponent,
     CarouselComponent,
     DatePipe,
+    HomeComponent,
   ],
-  imports: [CommonModule, PagesRoutingModule, SwiperModule, ReactiveFormsModule, MatInputModule ],
+  imports: [CommonModule, PagesRoutingModule, SwiperModule, MatButtonModule, MatCardModule ],
 })
 export class PagesModule {}

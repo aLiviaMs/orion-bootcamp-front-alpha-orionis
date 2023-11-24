@@ -1,0 +1,71 @@
+@import "../../theme/styles/theme.scss";
+@import "../../theme/styles/mixins.scss";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.text-info {
+  width: 500px;
+
+  h1 {
+    font-size: 35px;
+    margin-bottom: 8px;
+    margin-left: 0px;
+  }
+
+  span {
+    font-size: 13px;
+    margin-left: -1px;
+  }
+}
+
+.container-form {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.email-input {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+// Botão de enviar/inscrever-se
+.send-btn {
+  @include common-button-styles;
+  background-color: var(--foundation-primary, #979797);
+  color: #171717;
+  margin-top: 1.5rem;
+
+  &:disabled {
+    background-color: var(--foundation-primary, #979797);
+    color: #171717;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.valid-button-color {
+    color: $white;
+  }
+}
+
+// Estilos para o botão válido (quando o formulário for válido)
+.valid-button-color {
+  background-color: var(--foundation-primary, #ba8e73);
+  opacity: 1;
+  color: $white;
+
+  &:disabled {
+    background-color: var(--foundation-primary, #ba8e73);
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

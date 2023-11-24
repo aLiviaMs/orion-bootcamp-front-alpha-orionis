@@ -1,7 +1,10 @@
+@import '../../styles/colors.scss';
+
 // redefine tag p para não herdar estilos do mat-card
 ::ng-deep.mat-typography .paragraph-customization {
   margin: 0;
   padding: 0;
+  vertical-align: bottom;
 }
 
 .card-principal {
@@ -29,7 +32,7 @@
 
 .calendar-section {
   width: 195px;
-  height: 127px;
+  height: 120px;
   margin: 44px 54px 41px 32px;
 
   .calendar-icon-img {
@@ -44,7 +47,7 @@
     text-transform: uppercase;
     font-style: normal;
     line-height: normal;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
   }
 
   .display-date {
@@ -93,4 +96,20 @@
 .wrapper-max-temp img,
 .wrapper-min-temp img {
   margin-left: 10px;
+}
+
+.disabled-btn {
+  color: $primary-300;
+  display: inline-block;
+  pointer-events: none;
+}
+
+.enabled-btn {
+  text-decoration: none;
+  color: $primary-700;
+}
+
+.no-click {
+  display: inline-block;
+  text-decoration: underline;
 }

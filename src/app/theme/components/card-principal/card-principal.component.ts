@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { IWeatherCard } from '../../../core/models/IWeatherCard';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { EnumVariation } from 'src/app/core/common/enums/enum.variation';
+import { IWeatherCard } from '../../../core/models/IWeatherCard';
 
 @Component({
   selector: 'app-card-principal',
@@ -10,7 +10,7 @@ import { EnumVariation } from 'src/app/core/common/enums/enum.variation';
 })
 export class CardPrincipalComponent {
   @Input() public weatherCard!: IWeatherCard;
-
+  public tempSelection = true;
   constructor(private sanitizer: DomSanitizer) {}
 
   /**
@@ -33,11 +33,12 @@ export class CardPrincipalComponent {
       currentVariation === EnumVariation.HIGHER
         ? 'rotate(180 8.5 5.5)'
         : 'rotate(0 8.5 5.5';
-    const fill =
-      currentVariation === EnumVariation.HIGHER ? '#FF7474' : '#A3FCB6';
 
-    const height = currentVariation === EnumVariation.HIGHER ? '35px' : '17px';
-    const width = currentVariation === EnumVariation.HIGHER ? '25px' : '17px';
+    const fill =
+      currentVariation !== EnumVariation.HIGHER ? '#FF7474' : '#A3FCB6';
+
+    const height = currentVariation !== EnumVariation.HIGHER ? '35px' : '17px';
+    const width = currentVariation !== EnumVariation.HIGHER ? '25px' : '17px';
 
     const svgElement = `<svg
       width="20"
@@ -57,5 +58,15 @@ export class CardPrincipalComponent {
     </svg>`;
 
     return this.sanitizer.bypassSecurityTrustHtml(svgElement);
+  }
+
+  /**
+   * Usado para trocar as escalas de  temperaturas
+   * True sera usado para escala em Celsius
+   * False sera usado para escala em Farhenheit
+   */
+  public onClick():void {
+    event?.preventDefault();
+    this.tempSelection = !this.tempSelection
   }
 }

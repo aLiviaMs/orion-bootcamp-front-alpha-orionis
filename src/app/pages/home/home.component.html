@@ -1,78 +1,18 @@
-<div class="moon-centered-large-background">
+<div class="home-wrapper moon-centered-large-background">
     <div class="mars-cards-container">
-        <div class="greetings-panel">
-            <div class="greetings-text">
-                <h1 class="title">Olá, 
-                    <span class="highlighted-text">
-                        explorador(a) Orion!
-                    </span>
-                </h1>
-                <span class="sub-title">Seja bem vindo(a)! O que veremos hoje?</span>   
-            </div>
+        <div class="greetings-panel" [@fadeInOut]="1">
+            <app-page-title 
+                [title]="'Olá,'"
+                [subtitle]="'Seja bem vindo(a)! O que veremos hoje?'"
+                [highlight]="'explorador(a) Orion!'"
+            >
+            </app-page-title>
             <app-logout></app-logout> 
         </div>
-        <div [@cardsAnimations]="1" class="cards-container">
-            <div class="mars-cards">
-                <div class="card">
-                    <img src="../../../assets/images/mars-ground.jpeg" alt="mars_image.jpg">
-                    <div class="forecast-card card-info">
-                        <h3><b>Meteorologia em Marte</b></h3>
-                        <span class="forecast-card-info">
-                            Veja a previsão do tempo
-                            em Marte ao vivo! Descubra
-                            como são as temperaturas no planeta
-                            vermelho
-                        </span>
-                        <button
-                            mat-flat-button
-                            color="primary"
-                            class="btn-enter enabled-btn"
-                            type="submit"
-                            (click)="onClick()"
-                        >
-                            ENTRAR
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img class="gray-img" src="../../../assets/images/mars-rockets.jpeg" alt="mars_image.jpg">
-                    <div class="comunnity-card card-info">   
-                        <h3><b>Nossa comunidade</b></h3>
-                        <span class="comunnity-card-info">
-                            Entre em nossa comunidade e fique por
-                            dentro de todos os acontecimentos espaciais
-                        </span>
-                        <button
-                            mat-flat-button
-                            color="primary"
-                            class="btn-enter enabled-btn"
-                            type="submit"
-                            (click)="openNewTab('https://discord.gg/kCXUACrC3B')"
-                        >
-                            ENTRAR
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img class="gray-img" src="../../../assets//images/mars-hover.jpeg" alt="mars_image.jpg">
-                    <div class="news-card card-info">
-                        <h3><b>Notícias de Marte</b></h3>
-                        <span class="news-card-info">
-                            Ansioso por notícias? Entre no seu portal
-                            de notícias da Via Láctea!
-                        </span>
-                        <button
-                            mat-flat-button
-                            color="primary"
-                            class="btn-enter enabled-btn"
-                            type="submit"
-                            (click)="openNewTab('https://exporion.blogspot.com/')"
-                        >
-                            ENTRAR
-                        </button>
-                    </div>
+        <div [@cardsAnimations]="1">
+            <div class="mars-cards" >
+                <div *ngFor = "let card of cards" >
+                    <app-card-home [card]="card" (buttonClick)="card.callback"></app-card-home>
                 </div>
             </div>
         </div>

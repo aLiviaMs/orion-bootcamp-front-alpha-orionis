@@ -21,7 +21,7 @@ export class LogoutComponent {
    */
   public logout(): void {
     this.loaderService.setLoading(true);
-    this.router.navigate(['/login']);
+    this.router.navigate(['auth/login']);
     this.storageService.removeItem('token');
     this.loaderService.setLoading(false);
   }

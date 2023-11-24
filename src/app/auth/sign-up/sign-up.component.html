@@ -1,153 +1,156 @@
-<div class="grey-layer">
+<div class="moon-right-large-background">
   <div class="register-container">
     <div class="info-panel">
       <div class="text-info">
         <h1>Olá, explorador(a)!</h1>
-        <span>
-            Por favor, faça seu cadastro.
-        </span>
+        <span> Por favor, faça seu cadastro. </span>
       </div>
     </div>
 
     <div [formGroup]="formNewUser">
-      <mat-form-field appearance="outline" class="email-input">        
+      <mat-form-field appearance="outline" class="email-input">
         <mat-label>E-mail</mat-label>
-        <input 
-          matInput 
+        <input
+          matInput
           formControlName="email"
           (keydown.space)="$event.preventDefault()"
-        >
+        />
       </mat-form-field>
-      <mat-error 
-        class="input-error" 
-        *ngIf="formNewUser.get('email')?.invalid && formNewUser.get('email')?.dirty"
+      <mat-error
+        class="input-error"
+        *ngIf="
+          formNewUser.get('email')?.invalid && formNewUser.get('email')?.dirty
+        "
       >
         E-mail inválido
-      </mat-error> 
+      </mat-error>
 
-      <mat-form-field appearance="outline" class="pass-input">        
+      <mat-form-field appearance="outline" class="pass-input">
         <mat-label>Digite sua senha</mat-label>
-        <input 
+        <input
           matInput
           formControlName="password"
           [type]="hideFirstPass ? 'password' : 'text'"
           (keydown.space)="$event.preventDefault()"
-        >
-        <mat-icon 
-          matSuffix 
-          (click)="hideFirstPass= !hideFirstPass"
-        >
+        />
+        <mat-icon matSuffix (click)="hideFirstPass = !hideFirstPass">
           {{ hideFirstPass ? "visibility_off" : "visibility" }}
         </mat-icon>
       </mat-form-field>
-      <mat-error 
-        class="input-error" 
-        *ngIf="formNewUser.get('password')?.invalid && formNewUser.get('password')?.dirty"
-      >
-        Preenchido de forma incorreta, tente novamente!
-      </mat-error> 
-
-      <mat-form-field appearance="outline" class="pass-confirm-input">
-        <mat-label>Confirme sua senha</mat-label>
-        <input 
-          matInput 
-          formControlName="passConfirmation" 
-          [type]="hideSecondPass ? 'password' : 'text'"
-          (keydown.space)="$event.preventDefault()"
-        >
-        <mat-icon 
-          matSuffix 
-          (click)="hideSecondPass = !hideSecondPass"
-        >
-          {{ hideSecondPass ? "visibility_off" : "visibility" }}
-        </mat-icon>
-      </mat-form-field>
-      <mat-error 
-        class="input-error" 
-        *ngIf="formNewUser.get('passConfirmation')?.invalid && formNewUser.get('passConfirmation')?.dirty"
+      <mat-error
+        class="input-error"
+        *ngIf="
+          formNewUser.get('password')?.invalid &&
+          formNewUser.get('password')?.dirty
+        "
       >
         Preenchido de forma incorreta, tente novamente!
       </mat-error>
 
-      <div class="errors" *ngIf="formNewUser?.get('password')?.touched || formNewUser?.get('password')?.dirty || formNewUser?.get('passConfirmation')?.touched || formNewUser?.get('passConfirmation')?.dirty ">
-        <div 
-          [ngStyle]="{ 'color': formNewUser.get('password')?.errors?.['passwordSizeError'] ? '#e38686' : '#90dfa1' }" 
+      <mat-form-field appearance="outline" class="pass-confirm-input">
+        <mat-label>Confirme sua senha</mat-label>
+        <input
+          matInput
+          formControlName="passConfirmation"
+          [type]="hideSecondPass ? 'password' : 'text'"
+          (keydown.space)="$event.preventDefault()"
+        />
+        <mat-icon matSuffix (click)="hideSecondPass = !hideSecondPass">
+          {{ hideSecondPass ? "visibility_off" : "visibility" }}
+        </mat-icon>
+      </mat-form-field>
+      <mat-error
+        class="input-error"
+        *ngIf="
+          formNewUser.get('passConfirmation')?.invalid &&
+          formNewUser.get('passConfirmation')?.dirty
+        "
+      >
+        Preenchido de forma incorreta, tente novamente!
+      </mat-error>
+
+      <div
+        class="errors"
+        *ngIf="
+          formNewUser?.get('password')?.touched ||
+          formNewUser?.get('password')?.dirty ||
+          formNewUser?.get('passConfirmation')?.touched ||
+          formNewUser?.get('passConfirmation')?.dirty
+        "
+      >
+        <div
+          [ngStyle]="{ 'color': formNewUser.get('password')?.errors?.['passwordSizeError'] ? '#e38686' : '#90dfa1' }"
           class="ngErrors"
         >
-          <img 
+          <img
             [src]="formNewUser.get('password')?.errors?.['passwordSizeError'] ? '../../../assets/images/whiteChecked.svg' : '../../../assets/images/greenChecked.svg'"
-            alt="svg-checked">
+            alt="svg-checked"
+          />
           A senha deve conter, no mínimo, 8 caracteres;
         </div>
 
-        <div 
-          [ngStyle]="{ 'color': formNewUser.get('password')?.errors?.['upperCaseError'] ? '#e38686' : '#90dfa1' }" 
+        <div
+          [ngStyle]="{ 'color': formNewUser.get('password')?.errors?.['upperCaseError'] ? '#e38686' : '#90dfa1' }"
           class="ngErrors"
         >
-          <img 
+          <img
             [src]="formNewUser.get('password')?.errors?.['upperCaseError'] ? '../../../assets/images/whiteChecked.svg' : '../../../assets/images/greenChecked.svg'"
-            alt="svg-checked">
+            alt="svg-checked"
+          />
           Deve ter pelo menos 1 letra maiúscula;
         </div>
 
-        <div 
-          [ngStyle]="{ 'color': formNewUser.get('password')?.errors?.['numbersError'] ? '#e38686' : '#90dfa1' }" 
+        <div
+          [ngStyle]="{ 'color': formNewUser.get('password')?.errors?.['numbersError'] ? '#e38686' : '#90dfa1' }"
           class="ngErrors"
         >
-          <img 
+          <img
             [src]="formNewUser.get('password')?.errors?.['numbersError'] ? '../../../assets/images/whiteChecked.svg' : '../../../assets/images/greenChecked.svg'"
-            alt="svg-checked">
+            alt="svg-checked"
+          />
           Deve ter pelo menos 1 número;
         </div>
 
-        <div 
+        <div
           [ngStyle]="{ 'color': formNewUser.get('password')?.errors?.['specialLetterError'] ? '#e38686' : '#90dfa1' }"
           class="ngErrors"
         >
-          <img 
+          <img
             [src]="formNewUser.get('password')?.errors?.['specialLetterError'] ? '../../../assets/images/whiteChecked.svg' : '../../../assets/images/greenChecked.svg'"
             alt="svg-checked"
-          >
+          />
           Deve ter pelo menos 1 caractere especial: !@#
         </div>
 
         <div
-          [ngStyle]="{ color: formNewUser.errors?.['passMissMatch'] ? '#e38686' : '#90dfa1' }" 
+          [ngStyle]="{ color: formNewUser.errors?.['passMissMatch'] ? '#e38686' : '#90dfa1' }"
           class="ngErrors"
         >
-          <img 
+          <img
             [src]="formNewUser.errors?.['passMissMatch'] ? '../../../assets/images/whiteChecked.svg' : '../../../assets/images/greenChecked.svg'"
             alt="svg-checked"
-          >
-            Ambos os campos devem conter senhas iguais!
+          />
+          Ambos os campos devem conter senhas iguais!
         </div>
       </div>
-                
-      <mat-checkbox
-        class="matCheckbox"
-        formControlName="isNewsletterEnabled"
-      >
+
+      <mat-checkbox class="matCheckbox" formControlName="isNewsletterEnabled">
         Gostaria de receber informações através da nossa newsletter?
       </mat-checkbox>
-      <button 
+      <button
         mat-flat-button
         color="primary"
         class="send-btn"
         [disabled]="formNewUser.invalid"
         (click)="newUserBtnRequest()"
-        [class.valid-button-color]="formNewUser.valid" 
+        [class.valid-button-color]="formNewUser.valid"
       >
         CRIAR CONTA
       </button>
       <div class="goBackDiv">
         <span>
-          Já possui uma conta? 
-          <a 
-            class="goBackLogin"
-            [routerLink]="'/auth/login'"
-          >
-            Conecte-se
-          </a>
+          Já possui uma conta?
+          <a class="goBackLogin" [routerLink]="'/auth/login'"> Conecte-se </a>
         </span>
       </div>
     </div>

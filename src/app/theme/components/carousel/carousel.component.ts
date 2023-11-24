@@ -7,10 +7,10 @@ import {
 } from '@angular/core';
 import { IWeatherCard } from 'src/app/core/models/IWeatherCard';
 import SwiperCore, {
-  Navigation,
-  Scrollbar,
   A11y,
+  Navigation,
   Pagination,
+  Scrollbar,
   SwiperOptions,
 } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
@@ -36,6 +36,10 @@ export class CarouselComponent implements AfterViewInit {
   public config: SwiperOptions = {
     slidesPerView: 'auto',
     spaceBetween: 24,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
   };
 
   @ViewChild(SwiperComponent) private swiperComponent?: SwiperComponent;

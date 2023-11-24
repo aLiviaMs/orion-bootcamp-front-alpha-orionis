@@ -1,8 +1,8 @@
 import { NgModule, Type } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
-import { PagesModule } from './pages/pages.module';
 import { AuthGuardService } from './core/services/auth-guard.service';
+import { PagesModule } from './pages/pages.module';
 
 const routes: Routes = [
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
       import('./pages/pages.module').then((m) => m.PagesModule),
     canActivate: [AuthGuardService],
   },
-  { path: '**', redirectTo: 'auth' },
+  { path: '**', redirectTo: 'pages' },
 ];
 
 @NgModule({

@@ -1,38 +1,35 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { DialogComponent } from '../../theme/components/dialog/dialog.component';
+import { Injectable } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/theme/components/dialog/dialog.component';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ModalService implements OnDestroy {
-  private dialogListener$: Subscription = Subscription.EMPTY;
-
-  constructor(private dialog: MatDialog, private router: Router) {}
+export class ModalService {
+  constructor(private dialog: MatDialog) {}
 
   /**
-   * Exibe um modal de sucesso com a resposta fornecida e redireciona para a página de login após o fechamento do modal.
+   * Exibe uma caixa de diálogo modal.
    *
-   * @param response A mensagem de resposta a ser exibida no modal de sucesso.
+   * @param data - Um objeto com informações para a caixa de diálogo.
+   *   - feedback: 'success' ou 'error'
+   *   - title: O título da caixa de diálogo.
+   *   - message: A mensagem a ser exibida na caixa de diálogo.
+   *   - onClick (opcional): Uma função a ser executada após o fechamento da caixa de diálogo.
    */
-  public showSuccessDialog(response: string): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      data: { response: response },
-    });
+  public showDialog(data: {
+    feedback: 'success' | 'error';
+    title: string;
+    message: string;
+    onClick?: () => void;
+  }): MatDialogRef<DialogComponent> {
+    const dialogRef = this.dialog.open(DialogComponent, { data });
 
-    this.dialogListener$ = dialogRef.afterClosed().subscribe(() => {
-      this.router.navigate(['/login']);
-    });
-  }
+    // Observa o fechamento da caixa de diálogo e executa a função onClick (se fornecida).
+    if (data.onClick) {
+      data.onClick();
+    }
 
-  /**
-   * Implementação do método `ngOnDestroy` para o serviço ModalService.
-   * Chamado quando o serviço está prestes a ser destruído.
-   * Realiza a desinscrição do dialogListener$.
-   */
-  public ngOnDestroy(): void {
-    this.dialogListener$.unsubscribe();
+    return dialogRef;
   }
 }

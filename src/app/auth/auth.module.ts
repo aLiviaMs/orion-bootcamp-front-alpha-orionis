@@ -1,3 +1,4 @@
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,23 +12,25 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { NewsletterSubscriptionComponent } from './newsletter-subscription/newsletter-subscription.component';
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [
     CommonModule,
-    NewPasswordComponent,
-    PasswordResetComponent,
-    SignUpComponent,
     AuthRoutingModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    NewPasswordComponent,
+    PasswordResetComponent,
     MatInputModule,
+    SignUpComponent,
     MatCheckboxModule,
     MatIconModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    SignUpComponent,
+    NewsletterSubscriptionComponent,
   ],
 })
 export class AuthModule {}

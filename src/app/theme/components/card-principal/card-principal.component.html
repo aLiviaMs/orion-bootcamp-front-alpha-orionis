@@ -24,13 +24,27 @@
     />
     <div class="wrapper-max-temp">
       <p class="max-temperature paragraph-customization">
-        Max.: {{ weatherCard.temperature.celsius.max.value }}º C | F
+        Máx.:&nbsp;&nbsp; {{ tempSelection ? weatherCard.temperature.celsius.max.value : weatherCard.temperature.fahrenheit.max.value }}º
+          <a href=`` (click)="onClick()" [ngClass]="{ 'enabled-btn' : !tempSelection, 'disabled-btn' : tempSelection}">
+            C
+          </a>
+            |
+          <a href=`` (click)="onClick()" [ngClass]="{ 'enabled-btn' : tempSelection, 'disabled-btn' : !tempSelection}" >
+            F
+          </a>
       </p>
       <div [innerHTML]="getTemperature('max')"></div>
     </div>
     <div class="wrapper-min-temp">
       <p class="min-temperature paragraph-customization">
-        Min.: {{ weatherCard.temperature.celsius.min.value }}º C | F
+        Mín.: &nbsp;{{ tempSelection ? weatherCard.temperature.celsius.min.value : weatherCard.temperature.fahrenheit.min.value }}º
+        <a  [ngClass]="{ 'enabled-btn ' : !tempSelection, 'disabled-btn no-click' : tempSelection}">
+          C
+        </a>
+          |
+        <a  [ngClass]="{ 'enabled-btn ' : tempSelection, 'disabled-btn no-click' : !tempSelection}" >
+          F
+        </a>
       </p>
       <div [innerHTML]="getTemperature('min')"></div>
     </div>

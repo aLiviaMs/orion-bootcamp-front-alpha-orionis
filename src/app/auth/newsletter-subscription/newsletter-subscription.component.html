@@ -1,0 +1,38 @@
+<div class="moon-right-large-background">
+  <div class="wrapper">
+    <div class="text-info">
+      <h1>Newsletter</h1>
+      <span>
+        Inscreva-se para receber notícias atualizadas sobre Marte e outras
+        curiosidades no seu e-mail.
+      </span>
+    </div>
+    <form
+      [formGroup]="newsletterForm"
+      (ngSubmit)="onSubmit()"
+      class="container-form"
+    >
+      <mat-form-field appearance="outline" class="email-input">
+        <mat-label>E-mail</mat-label>
+        <input type="email" matInput formControlName="email" />
+        <mat-error *ngIf="newsletterForm.get('email')?.hasError('required')">
+          E-mail é obrigatório
+        </mat-error>
+        <mat-error *ngIf="newsletterForm.get('email')?.hasError('email')">
+          E-mail incorreto
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="send-btn"
+        [class.valid-button-color]="newsletterForm.valid"
+        [disabled]="newsletterForm.invalid"
+      >
+        Inscrever-se
+      </button>
+    </form>
+  </div>
+</div>

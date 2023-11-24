@@ -1,5 +1,5 @@
 <div class="carousel">
-  <img class="arrow-left" src="../../../../assets/images/arrow.png" alt="" />
+  <img class="arrow-left swiper-button-prev" src="../../../../assets/images/arrow.png" alt="" />
   <swiper [config]="config">
     <ng-template swiperSlide *ngFor="let weatherCard of weatherCards">
       <p class="sol">SOL {{ weatherCard.solDate }}</p>
@@ -13,5 +13,5 @@
       </p>
     </ng-template>
   </swiper>
-  <img class="arrow-right" src="../../../../assets/images/arrow.png" alt="" />
+  <img class="arrow-right swiper-button-next" src="../../../../assets/images/arrow.png" alt="" />
 </div>

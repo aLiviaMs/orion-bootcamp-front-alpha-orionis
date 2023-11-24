@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { IWeatherCard } from 'src/app/core/models/IWeatherCard';
 import { LoaderService } from 'src/app/core/services/loader.service';
 import { WeatherAPIService } from 'src/app/core/api/weather.api';
+import { ModalService } from 'src/app/core/services/modal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mars-weather-panel',
@@ -10,11 +12,13 @@ import { WeatherAPIService } from 'src/app/core/api/weather.api';
   styleUrls: ['./mars-weather-panel.component.scss'],
 })
 export class MarsWeatherPanelComponent implements OnInit {
-  public weatherCards!: IWeatherCard[];
+  public weatherCards: IWeatherCard[] = [];
 
   constructor(
     private weatherAPIService: WeatherAPIService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private ModalService: ModalService,
+    private router: Router
   ) {}
 
   /**
@@ -25,6 +29,13 @@ export class MarsWeatherPanelComponent implements OnInit {
    */
   public ngOnInit(): void {
     this.getTemperatureData();
+  }
+
+  /**
+   * Navega de volta para a página home.
+   */
+  public goBack(): void {
+    this.router.navigate(['pages/home']);
   }
 
   /**
@@ -42,6 +53,13 @@ export class MarsWeatherPanelComponent implements OnInit {
           this.weatherCards = response.data.weatherCards;
           this.weatherCards.reverse();
         }
+      })
+      .catch((error) => {
+        this.ModalService.showDialog({
+          title: 'Falha',
+          message: error,
+          feedback: 'error',
+        });
       })
       .finally(() => {
         this.loaderService.setLoading(false);

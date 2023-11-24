@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { IResponsePasswordForgot } from 'src/app/core/models/IResponsePasswordForgot';
 
 @Component({
   selector: 'app-dialog',
@@ -8,16 +7,39 @@ import { IResponsePasswordForgot } from 'src/app/core/models/IResponsePasswordFo
   styleUrls: ['./dialog.component.scss'],
 })
 export class DialogComponent {
+  /**
+   * Construtor do componente DialogComponent.
+   *
+   * @param dialogRef - Referência para o diálogo atual.
+   * @param data - Dados a serem exibidos no diálogo, incluindo feedback, título, mensagem e uma função opcional.
+   */
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IResponsePasswordForgot
+    @Inject(MAT_DIALOG_DATA)
+    public data: {
+      feedback: 'success' | 'error';
+      title: string;
+      message: string;
+      onClick?: () => void;
+    }
   ) {}
 
   /**
-   * Este método é usado para fechar o modal, removendo-o da interface do usuário.
-   *
+   * Método para fechar o diálogo.
    */
+
   public cancel(): void {
     this.dialogRef.close();
+  }
+
+  /**
+   * Método para lidar com o clique no botão do diálogo.
+   * Executa a função `onClick` se estiver definida e, em seguida, fecha o diálogo.
+   */
+  public onClick(): void {
+    if (this.data.onClick) {
+      this.data.onClick();
+    }
+    this.cancel();
   }
 }

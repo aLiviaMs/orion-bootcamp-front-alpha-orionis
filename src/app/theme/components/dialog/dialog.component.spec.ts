@@ -1,15 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DialogComponent } from './dialog.component';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 describe('DialogComponent', () => {
   let component: DialogComponent;
   let fixture: ComponentFixture<DialogComponent>;
 
   beforeEach(() => {
+    const mockDialogData = {
+      feedback: 'success',
+      title: 'Test Title',
+      message: 'Test Message',
+      onClick: jasmine.createSpy('onClick'),
+    };
+
     TestBed.configureTestingModule({
-      declarations: [DialogComponent]
+      declarations: [DialogComponent],
+      providers: [{ provide: MAT_DIALOG_DATA, useValue: mockDialogData }],
     });
+
     fixture = TestBed.createComponent(DialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

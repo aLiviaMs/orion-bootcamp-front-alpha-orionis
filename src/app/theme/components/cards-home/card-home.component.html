@@ -1,0 +1,34 @@
+<mat-card 
+  class="card"           
+  (mouseenter)="toggleBlur()" 
+  (mouseleave)="toggleBlur()"
+>
+  <img 
+    [@blueOut]="imgState"
+    class="bg-image hover-zoom"
+    class="header-image" 
+    mat-card-image src="{{card.img}}" 
+    alt="{{card.imgAlt}}"
+  >
+  <div class="content-wrapper">
+    <mat-card-content>
+      <mat-card-title>
+        {{card.title}}
+      </mat-card-title>
+      <span>
+       {{card.paragraph}}
+      </span>
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+          [@colorChange]="buttonState" 
+          (mouseenter)="toggleColor()" 
+          (mouseleave)="toggleColor()"
+          class="btn-enter enabled-btn"
+          (click)="onClick($event)"
+        >
+          ENTRAR
+        </button>
+    </mat-card-actions>
+  </div>
+</mat-card>

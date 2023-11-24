@@ -30,12 +30,12 @@ export class BaseAPI {
   public get<TR>(params = ''): Promise<TR> {
     const headers = this.setHeaders();
     return new Promise<TR>((resolve, reject) => {
-      this.httpClient.get<TR>(this.apiUrl+params, { headers }).subscribe(
+      this.httpClient.get<TR>(this.apiUrl + params, { headers }).subscribe(
         (response: TR) => {
           resolve(response);
         },
         (error) => {
-          reject(`${error.error.data?.message || 'Erro desconhecido'}`);
+          reject(`${error.error.data?.message || 'Ocorreu um erro na comunicação com o servidor. Tente novamente.'}`);
         }
       );
     });
@@ -47,7 +47,7 @@ export class BaseAPI {
    * @param data Os dados a serem enviados na requisição.
    * @returns Uma Promise com a resposta da API no resolve se a requisição for bem-sucedida, ou uma mensagem de erro no reject em caso de falha.
    */
-  protected post<TD, TR>(data: TD): Promise<TR> {
+  public post<TD, TR>(data: TD): Promise<TR> {
     const headers = this.setHeaders();
 
     return new Promise<TR>((resolve, reject) => {
@@ -56,7 +56,13 @@ export class BaseAPI {
           resolve(response);
         },
         (error) => {
-          reject(`${error?.message || 'Erro desconhecido'}`);
+          reject(
+            error.error && error.error.data && error.error.data.message
+              ? error.error.data.message
+              : error.error && error.error.message
+              ? error.error.message
+              : 'Ocorreu um erro na comunicação com o servidor. Tente novamente.'
+          );
         }
       );
     });

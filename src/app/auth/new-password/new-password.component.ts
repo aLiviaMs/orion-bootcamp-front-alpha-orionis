@@ -1,15 +1,27 @@
-import { CommonModule, NgIf, } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule, NgIf } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NewPasswordApi } from 'src/app/core/api/new-password.api';
 import { IRequestNewPass } from 'src/app/core/models/IRequestNewPass';
-import { IResponsePasswordForgot } from 'src/app/core/models/IResponsePasswordForgot';
+import { Subscription } from 'rxjs';
+
 import { ModalService } from 'src/app/core/services/modal.service';
 import { LoaderService } from '../../core/services/loader.service';
-import { hasEnoughLetters, noSpaces, numbersValidation, specialLetterValidation, upperCaseValidation } from './customValidator/passMatch-Validator';
+import {
+  hasEnoughLetters,
+  noSpaces,
+  numbersValidation,
+  specialLetterValidation,
+  upperCaseValidation,
+} from './customValidator/passMatch-Validator';
 
 @Component({
   selector: 'app-new-password',
@@ -24,19 +36,27 @@ import { hasEnoughLetters, noSpaces, numbersValidation, specialLetterValidation,
     MatIconModule,
   ],
 })
-
-export class NewPasswordComponent implements OnInit {
+export class NewPasswordComponent implements OnInit, OnDestroy {
   public formNewPassword: FormGroup;
   public hideFirstPass = true;
   public hideSecondPass = true;
   public specialCharTheme = '';
-  public errorMessage = '';
   private resetToken = '';
   private userId = '';
-  
+  private dialogRefSubscription!: Subscription;
+
+  /**
+   * Construtor do componente de redefinição de senha.
+   * @param activatedRouter - Serviço para obter parâmetros da URL.
+   * @param formBuilder - Serviço para construir formulários reativos.
+   * @param router - Serviço de roteamento do Angular.
+   * @param loaderService - Serviço para controlar o estado de carregamento.
+   * @param resetPassApi - Serviço para interagir com a API de redefinição de senha.
+   * @param modalService - Serviço para exibir diálogos modais.
+   */
   constructor(
-    private activatedRouter: ActivatedRoute, 
-    private formBuilder: FormBuilder, 
+    private activatedRouter: ActivatedRoute,
+    private formBuilder: FormBuilder,
     private router: Router,
     private loaderService: LoaderService,
     private resetPassApi: NewPasswordApi,
@@ -46,6 +66,7 @@ export class NewPasswordComponent implements OnInit {
     this.activatedRouter = activatedRouter;
     this.userId = this.activatedRouter.snapshot.params['id'];
     this.resetToken = this.activatedRouter.snapshot.params['reset-token'];
+
 
     this.formNewPassword = this.formBuilder.group({
       password: new FormControl(
@@ -72,13 +93,22 @@ export class NewPasswordComponent implements OnInit {
       validator: this.passwordMatchValidator
     });
   }
-  
+
   /**
-   * Realizar a checagem do resetToken e do Id de usuário ao 
+   * Realizar a checagem do resetToken e do Id de usuário ao
    * inicializar a tela
    */
   public ngOnInit(): void {
     this.loadScreen();
+  }
+
+  /**
+   * Executa ações de limpeza e desinscrição de observáveis ao destruir o componente.
+   */
+  ngOnDestroy(): void {
+    if (this.dialogRefSubscription) {
+      this.dialogRefSubscription.unsubscribe();
+    }
   }
 
   /**
@@ -92,9 +122,20 @@ export class NewPasswordComponent implements OnInit {
     this.loaderService.setLoading(true);
     this.resetPassApi
       .tokenVerify(this.userId, this.resetToken)
+      .then(() => {
+        // Token válido, a página pode ser carregada
+      })
       .catch((error) => {
-        this.errorMessage = error;
-        this.modalService.showSuccessDialog(this.errorMessage)
+        this.modalService
+          .showDialog({
+            title: 'Falha!',
+            message: error,
+            feedback: 'error',
+          })
+          .afterClosed()
+          .subscribe(() => {
+            this.router.navigate(['/login']);
+          });
       })
       .finally(() => {
         this.loaderService.setLoading(false);
@@ -108,8 +149,10 @@ export class NewPasswordComponent implements OnInit {
    */
   private passwordMatchValidator(formNewPassword: FormGroup): { [key: string]: boolean } | null {
     const password: string = formNewPassword?.get('password')?.value;
+
     const passConfirmation: string = formNewPassword?.get('passConfirmation')?.value;
     return password === passConfirmation ? null : { passMissMatch: true};
+
   }
 
   /**
@@ -126,14 +169,18 @@ export class NewPasswordComponent implements OnInit {
    * @returns Um json contendo todos os dados para fazer requisição post na rota /reset/password
    */
   private createRequestJson(): IRequestNewPass {
-    const password: string = this.formNewPassword?.get('password')?.value.replace(/\s/g, "");
-    const passConfirmation: string = this.formNewPassword?.get('passConfirmation')?.value.replace(/\s/g, "");
+    const password: string = this.formNewPassword
+      ?.get('password')
+      ?.value.replace(/\s/g, '');
+    const passConfirmation: string = this.formNewPassword
+      ?.get('passConfirmation')
+      ?.value.replace(/\s/g, '');
     const userData: IRequestNewPass = {
-      resetToken: this.resetToken, 
+      resetToken: this.resetToken,
       password,
       confirmPassword: passConfirmation,
       id: this.userId,
-    }
+    };
     return userData;
   }
 
@@ -147,12 +194,22 @@ export class NewPasswordComponent implements OnInit {
     this.loaderService.setLoading(true);
     this.resetPassApi
       .newPassRequest(userData)
-        .then((response: IResponsePasswordForgot) => {
-          this.modalService.showSuccessDialog(response.data.message)
+      .then(() => {
+        this.modalService.showDialog({
+          feedback: 'success',
+          title: 'Sucesso',
+          message: 'Senha alterada com sucesso!',
+          onClick: () => {
+            this.router.navigate(['/login']);
+          },
+        });
       })
       .catch((error) => {
-        this.errorMessage = error;
-        this.modalService.showSuccessDialog(this.errorMessage)
+        this.modalService.showDialog({
+          feedback: 'error',
+          title: 'Erro',
+          message: error,
+        });
       })
       .finally(() => {
         this.loaderService.setLoading(false);
