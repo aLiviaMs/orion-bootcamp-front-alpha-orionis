@@ -2,43 +2,50 @@
 
 @import '../../theme/styles/colors.scss';
 
-app-logout {
-    margin-top: 20px;
-}
+@import "../../theme/styles/mixins.scss";
+
+@import "swiper/scss";
+
+@import "swiper/css/pagination";
 
 .moon-centered-large-background {
-    overflow-y: hidden;
+    height: 100vh
 }
 
 .mars-cards-container {
     display: flex;
     flex-direction: column;
-    padding: 50px;
+    justify-content: center;
 }
 
 .greetings-panel {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-content: space-between;
-    padding-left: 50px;
-    padding-right: 50px;
-    margin-bottom: 20px;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 1vh;
 }
 
-.title {
-    font-size: 3rem;
-    margin-bottom: 15px;
+.title>div>h1 {
+    font-size: calc(2vw + 10px);
 }
 
-#app-page-title {
-    color: $primary-500
+.logout-btn {
+    display: flex;
+    align-items: center;
+    margin-left: 1vw
+}
+
+.logout-btn>.logout-button>img {
+    height: calc(2vw + 10px);
+    width: calc(2vw + 10px)
 }
 
 .mars-cards {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 @keyframes zoomIn {
@@ -53,4 +60,25 @@ app-logout {
 
 .moon-centered-large-background {
     animation: 1s ease-out 0s 1 zoomIn;
+}
+
+.swiper-slide {
+    padding-top: 1vh;
+}
+
+.mars-carousel {
+    display: flex;
+    align-items: center;
+    box-sizing: content-box;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin-top: 5vh
+}
+
+.swiper-pagination-bullet-active {
+    background-color: $primary-500;
+}
+
+.swiper-pagination-bullet {
+    background-color: $primary-300;
 }

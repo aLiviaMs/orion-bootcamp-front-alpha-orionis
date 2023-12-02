@@ -2,21 +2,39 @@
 
 @import '../../styles/colors.scss';
 
+@import "../../styles/mixins.scss";
+
 .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 450px;
-    width: 380px;
-    margin: 20px;
+    height: 50vh;
+    width: 70vw;
+    min-width: 250px;
+    min-height: 500px;
+    max-width: 600px;
+    max-height: 800px;
+    margin: 2vw;
     color: $black;
     border-radius: 10px;
     background-color: $white;
     box-shadow: 1px 1px 10px 5px $black;
-    margin-top: -10px;
-    position: relative;
-    z-index: 1;
 }
+
+.header-image {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    filter: blur(1px);
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70%
+}
+
+
 
 .btn-enter {
     width: 100%;
@@ -24,22 +42,9 @@
     padding: 1.2rem 0.3rem;
     border-radius: 5px;
     box-shadow: 0px 0px;
-    margin-top: 15px;
-    margin-bottom: 15px;
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
     color: $white;
     cursor: pointer;
-}
-
-.header-image {
-    position: relative;
-    height: 250px;
-    width: 380px;
-    filter: blur(2px);
-}
-
-.content-wrapper {
-    justify-content: space-around;
 }

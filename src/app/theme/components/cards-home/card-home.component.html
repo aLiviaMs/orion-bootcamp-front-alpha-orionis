@@ -12,10 +12,10 @@
   >
   <div class="content-wrapper">
     <mat-card-content>
-      <mat-card-title>
+      <mat-card-title class="mat-title">
         {{card.title}}
       </mat-card-title>
-      <span>
+      <span class="mat-subtitle">
        {{card.paragraph}}
       </span>
     </mat-card-content>
@@ -24,7 +24,7 @@
           [@colorChange]="buttonState" 
           (mouseenter)="toggleColor()" 
           (mouseleave)="toggleColor()"
-          class="btn-enter enabled-btn"
+          class="btn-enter enabled-btn common-button-styles"
           (click)="onClick($event)"
         >
           ENTRAR
