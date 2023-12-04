@@ -1,11 +1,12 @@
 .mars-weather {
-  padding: 80px 80px;
+  height: 100vh;
 }
 
 .weather-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 30px 20px;
 }
 
 .weather-title {
@@ -26,5 +27,6 @@
 .main-card {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 80px;
 }

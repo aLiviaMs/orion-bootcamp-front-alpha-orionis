@@ -1,11 +1,17 @@
+@import "../../../theme/styles/mixins.scss";
+
 h1 {
   color: var(--foundation-gray-scale-white, #fff);
   font-family: Inter;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   margin-bottom: 10px;
+
+  @include responsive(sm) {
+    font-size: 1rem;
+  }
 }
 
 p {
@@ -15,8 +21,12 @@ p {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  @include responsive(sm) {
+    font-size: 0.8rem;
+  }
 }
 
 span {
-  color: #ba8e73
+  color: #ba8e73;
 }

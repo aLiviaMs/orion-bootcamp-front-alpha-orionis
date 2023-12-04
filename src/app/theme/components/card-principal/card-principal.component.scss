@@ -1,4 +1,5 @@
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
+@import "../../styles/mixins.scss";
 
 // redefine tag p para não herdar estilos do mat-card
 ::ng-deep.mat-typography .paragraph-customization {
@@ -14,6 +15,13 @@
   align-items: center;
   border-radius: 26px;
   background: rgba(62, 51, 51, 0.25);
+
+  @include responsive(sm) {
+    width: 160%;
+    height: 120%;
+    // flex-direction: column;
+    // border-radius: 0;
+  }
 }
 
 .display-day,
@@ -21,6 +29,10 @@
   font-weight: 700;
   font-size: 34px;
   margin-right: 13px;
+
+  @include responsive(sm) {
+    font-size: 1rem;
+  }
 }
 
 .display-date,
@@ -35,10 +47,22 @@
   height: 120px;
   margin: 44px 54px 41px 32px;
 
+  @include responsive(sm) {
+    width: 140px;
+    height: 100px;
+    margin: 30px;
+  }
+
   .calendar-icon-img {
     width: 42px;
     height: 42px;
     margin-bottom: 16px;
+
+    @include responsive(sm) {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 8px;
+    }
   }
 
   .display-day {
@@ -48,6 +72,10 @@
     font-style: normal;
     line-height: normal;
     margin-bottom: 10px;
+
+    @include responsive(sm) {
+      font-size: 1rem;
+    }
   }
 
   .display-date {
@@ -64,10 +92,21 @@
   display: flex;
   flex-direction: column;
 
+  @include responsive(sm) {
+    width: 195px;
+    height: 120px;
+  }
+
   .thermometer-icon {
     width: 42px;
     height: 42px;
-    margin-bottom: 22px;
+    margin-bottom: 10px;
+
+    @include responsive(sm) {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 8px;
+    }
   }
 
   .max-temperature {
