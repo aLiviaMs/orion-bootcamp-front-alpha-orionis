@@ -1,34 +1,36 @@
 <mat-dialog-content class="container-dialog">
-  <div class="image-container">
-    <div></div>
-    <img
-      *ngIf="data.feedback === 'error'"
-      class="check-success"
-      src="../../../../assets/images/failure_icon.svg"
-      alt=""
-    />
-    <img
-      *ngIf="data.feedback === 'success'"
-      class="check-success"
-      src="../../../../assets/images/check_circle.png"
-      alt=""
-    />
-    <img
-      class="icon-close"
-      src="../../../../assets/images/icon-close.png"
-      alt=""
-      (click)="cancel()"
-      (keyup)="cancel()"
-      tabindex="0"
-    />
-  </div>
-  <h1 mat-dialog-title>{{ data.title }}</h1>
-  <mat-dialog-content>
-    <p>{{ data.message }}</p>
-  </mat-dialog-content>
-  <div mat-dialog-actions>
-    <button mat-stroked-button color="primary" (click)="onClick()">
-      Finalizar
-    </button>
+  <div class="wrapper-content">
+    <div class="image-container">
+      <div></div>
+      <img
+        *ngIf="data.feedback === 'error'"
+        class="check-success"
+        src="../../../../assets/images/failure_icon.svg"
+        alt=""
+      />
+      <img
+        *ngIf="data.feedback === 'success'"
+        class="check-success"
+        src="../../../../assets/images/check_circle.png"
+        alt=""
+      />
+      <img
+        class="icon-close"
+        src="../../../../assets/images/icon-close.png"
+        alt=""
+        (click)="cancel()"
+        (keyup)="cancel()"
+        tabindex="0"
+      />
+    </div>
+    <h1 mat-dialog-title>{{ data.title }}</h1>
+    <mat-dialog-content>
+      <p>{{ data.message }}</p>
+    </mat-dialog-content>
+    <div mat-dialog-actions>
+      <button mat-stroked-button color="primary" (click)="onClick()">
+        Finalizar
+      </button>
+    </div>
   </div>
 </mat-dialog-content>
