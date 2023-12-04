@@ -2,36 +2,36 @@
 @import "../../theme/styles/mixins.scss";
 
 h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1.9rem;
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
 
   @include responsive(lg) {
-    font-size: 3.2rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.6rem;
+    margin-bottom: 1.4rem;
   }
 
   @include responsive(md) {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 2.4rem;
+    margin-bottom: 0.8rem;
   }
 
   @include responsive(sm) {
     font-size: 2.2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
   }
 }
 
 p {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   line-height: normal;
   font-weight: normal;
 
   @include responsive(lg) {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   @include responsive(md) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   @include responsive(sm) {
@@ -69,7 +69,7 @@ a {
 .display-text,
 .input-section,
 .login-section {
-  width: 50%;
+  width: 40%;
   max-width: 820px;
   display: flex;
   flex-direction: column;
@@ -94,6 +94,10 @@ a {
     font-size: 0.6rem;
     font-weight: 600;
   }
+}
+
+.mat-mdc-unelevated-button.mat-mdc-button-base {
+  height: 3.5rem;
 }
 
 .btn-enter {
