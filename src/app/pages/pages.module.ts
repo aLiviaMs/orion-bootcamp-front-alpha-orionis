@@ -14,13 +14,11 @@ import { HomeComponent } from './home/home.component';
 import { LoadingComponent } from './loading/loading.component';
 import { MarsWeatherPanelComponent } from './mars-weather-panel/mars-weather-panel.component';
 import { PagesRoutingModule } from './pages-routing.module';
-import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 
 @NgModule({
   declarations: [
     LoadingComponent,
     MarsWeatherPanelComponent,
-    UnsubscribeComponent,
     LogoutComponent,
     HomeComponent,
     PageTitleComponent,

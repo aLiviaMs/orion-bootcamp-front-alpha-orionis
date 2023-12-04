@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MarsWeatherPanelComponent } from './mars-weather-panel/mars-weather-panel.component';
-import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 
 const routes: Routes = [
   {
@@ -12,10 +11,6 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-  },
-  {
-    path: 'unsubscribe/:token',
-    component: UnsubscribeComponent,
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   

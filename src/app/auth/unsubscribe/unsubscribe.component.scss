@@ -1,11 +1,16 @@
 @import "../../theme/styles/theme.scss";
+@import "../../theme/styles/colors.scss";
 
 .newsletter-feedback {
     height: 100vh;
     width: 100vw;
-    color: #FFFF;
+    color: $white;
     text-align: center;
-    font-size: 1vw;
+    margin-top: 2vh;
+}
+
+.newsletter-feedback>h1 {
+    font-size: calc(2vw + 10px);
 }
 
 .moon-right-large-background {

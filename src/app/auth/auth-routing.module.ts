@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../auth/login/login.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
+import { NewsletterSubscriptionComponent } from './newsletter-subscription/newsletter-subscription.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { NewsletterSubscriptionComponent } from './newsletter-subscription/newsletter-subscription.component';
-
+import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'newsletter-subscription',
     component: NewsletterSubscriptionComponent,
+  },
+  {
+    path: 'newsletter/unsubscribe/:token',
+    component: UnsubscribeComponent,
   },
   { path: '**', redirectTo: 'login' },
 ];
