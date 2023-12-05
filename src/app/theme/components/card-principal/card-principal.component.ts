@@ -32,7 +32,7 @@ export class CardPrincipalComponent {
     const rotation =
       currentVariation === EnumVariation.HIGHER
         ? 'rotate(180 8.5 5.5)'
-        : 'rotate(0 8.5 5.5';
+        : 'rotate(0 8.5 5.5)';
 
     const fill =
       currentVariation !== EnumVariation.HIGHER ? '#FF7474' : '#A3FCB6';
