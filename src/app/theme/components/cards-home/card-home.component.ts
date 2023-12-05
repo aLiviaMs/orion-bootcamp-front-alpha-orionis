@@ -19,16 +19,6 @@ import { IHomeCard } from 'src/app/core/models/iHomeCard';
         transition('initial => final', animate('500ms ease-in')),
         transition('final => initial', animate('500ms ease-out'))
       ]),
-      trigger('blueOut', [
-        state('initial', style({
-          filter: "blur(2px)" 
-        })),
-        state('final', style({
-          filter: "blur(0px)" 
-        })),
-        transition('initial => final', animate('500ms ease-in')),
-        transition('final => initial', animate('500ms ease-out'))
-      ])
     ]
 })
 
