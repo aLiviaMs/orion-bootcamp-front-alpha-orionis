@@ -35,14 +35,6 @@ export class CardHomeComponent {
     toggleColor(): void {
       this.buttonState = (this.buttonState === 'initial') ? 'final' : 'initial';
     }
-
-    /**
-     * Serve para modificar o estado de animação da imagem
-     * Inicial setado com blur 2x e final sem blur
-     */
-    toggleBlur(): void {
-      this.imgState = (this.imgState === 'initial') ? 'final' : 'initial';
-    }
     
     /**
      * Passada para o botão onde o usuário será direcionado para 
