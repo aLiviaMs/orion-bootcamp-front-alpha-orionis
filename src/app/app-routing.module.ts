@@ -16,7 +16,7 @@ const routes: Routes = [
       import('./pages/pages.module').then((m) => m.PagesModule),
     canActivate: [AuthGuardService],
   },
-  { path: '**', redirectTo: 'auth' },
+  { path: '**', redirectTo: 'pages' },
 ];
 
 @NgModule({
