@@ -1,12 +1,29 @@
 @import "../../styles/theme.scss";
+@import "../../styles/mixins.scss";
 
 .container-dialog {
   border-radius: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 360px;
+  width: 22.5rem;
   padding: 46px 52px;
+
+  @include responsive(sm) {
+    padding: 0;
+    width: 100%;
+    margin: 130px 0;
+  }
+}
+.wrapper-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  @include responsive(sm) {
+    width: 90%;
+  }
 }
 
 .image-container {
@@ -19,6 +36,11 @@
 .check-success {
   width: 100px;
   height: 100px;
+
+  @include responsive(sm) {
+    width: 40%;
+    height: 40%;
+  }
 }
 
 .icon-close {
@@ -70,4 +92,8 @@ mat-stroked-button {
   letter-spacing: 1.25px;
   text-transform: uppercase;
   margin: 20px 72px;
+
+  @include responsive(sm) {
+    margin: 20px 60px;
+  }
 }
