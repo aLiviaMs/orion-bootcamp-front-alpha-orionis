@@ -25,11 +25,6 @@ export class ModalService {
   }): MatDialogRef<DialogComponent> {
     const dialogRef = this.dialog.open(DialogComponent, { data });
 
-    // Observa o fechamento da caixa de diálogo e executa a função onClick (se fornecida).
-    if (data.onClick) {
-      data.onClick();
-    }
-
     return dialogRef;
   }
 }
