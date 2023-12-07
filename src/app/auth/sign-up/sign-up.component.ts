@@ -115,14 +115,13 @@ export class SignUpComponent {
       password,
       confirmPassword,
       isSubscribed: newsletterCheckbox,
-      isVerified: false,
     };
     return userData;
   }
 
   /**
    * Responsável por enviar o request com um JSON do tipo IRegisterRequest
-   * Que contem, email(string), password(string), confirmPassword(string), isSubscribed(bool) e isVerified(bool)
+   * Que contem, email(string), password(string), confirmPassword(string) e isSubscribed(bool)
    */
   protected newUserBtnRequest(): void {
     const userData = this.createRequestJson();
