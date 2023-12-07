@@ -20,13 +20,14 @@
 }
 
 .back-arrow {
-  margin-right: 32px;
+  margin-right: 15px;
   cursor: pointer;
 }
 
 .main-card {
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 80px;
+  margin: 0 40px;
 }

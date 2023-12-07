@@ -5,10 +5,16 @@
 }
 
 .logout-button img {
-  height: 45px;
+  height: 35px;
   margin-right: 10px;
+
+  @include responsive(md) {
+    height: 25px;
+    padding-left: 10px;
+  }
 
   @include responsive(sm) {
     height: 20px;
+    padding-left: 10px;
   }
 }
