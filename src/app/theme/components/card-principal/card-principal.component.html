@@ -5,16 +5,19 @@
       alt="icone de um calendário"
       class="calendar-icon-img"
     />
-    <p class="display-day paragraph-customization">
-      Sol {{ weatherCard.solDate }}
-    </p>
-    <p class="display-date paragraph-customization">
-      {{
-        weatherCard.terrestrialDate
-          ? (weatherCard.terrestrialDate | datePipe : "dd 'de' MMMM 'de' yyyy")
-          : ""
-      }}
-    </p>
+    <div class="wrapper-text-date">
+      <p class="display-day paragraph-customization">
+        Sol {{ weatherCard.solDate }}
+      </p>
+      <p class="display-date paragraph-customization">
+        {{
+          weatherCard.terrestrialDate
+            ? (weatherCard.terrestrialDate
+              | datePipe : "dd 'de' MMMM 'de' yyyy")
+            : ""
+        }}
+      </p>
+    </div>
   </div>
   <div class="temperature-section">
     <img
@@ -22,31 +25,66 @@
       alt="thermometer icon"
       class="thermometer-icon"
     />
-    <div class="wrapper-max-temp">
-      <p class="max-temperature paragraph-customization">
-        Máx.:&nbsp;&nbsp; {{ tempSelection ? weatherCard.temperature.celsius.max.value : weatherCard.temperature.fahrenheit.max.value }}º
-          <a href=`` (click)="onClick()" [ngClass]="{ 'enabled-btn' : !tempSelection, 'disabled-btn' : tempSelection}">
+    <div class="wrapper-temperatures">
+      <div class="wrapper-max-temp">
+        <p class="max-temperature paragraph-customization">
+          Máx.:&nbsp;&nbsp;
+          {{
+            tempSelection
+              ? weatherCard.temperature.celsius.max.value
+              : weatherCard.temperature.fahrenheit.max.value
+          }}º
+          <a
+            href="``"
+            (click)="onClick()"
+            [ngClass]="{
+              'enabled-btn': !tempSelection,
+              'disabled-btn': tempSelection
+            }"
+          >
             C
           </a>
-            |
-          <a href=`` (click)="onClick()" [ngClass]="{ 'enabled-btn' : tempSelection, 'disabled-btn' : !tempSelection}" >
+          |
+          <a
+            href="``"
+            (click)="onClick()"
+            [ngClass]="{
+              'enabled-btn': tempSelection,
+              'disabled-btn': !tempSelection
+            }"
+          >
             F
           </a>
-      </p>
-      <div [innerHTML]="getTemperature('max')"></div>
-    </div>
-    <div class="wrapper-min-temp">
-      <p class="min-temperature paragraph-customization">
-        Mín.: &nbsp;{{ tempSelection ? weatherCard.temperature.celsius.min.value : weatherCard.temperature.fahrenheit.min.value }}º
-        <a  [ngClass]="{ 'enabled-btn ' : !tempSelection, 'disabled-btn no-click' : tempSelection}">
-          C
-        </a>
+        </p>
+        <div [innerHTML]="getTemperature('max')"></div>
+      </div>
+      <div class="wrapper-min-temp">
+        <p class="min-temperature paragraph-customization">
+          Mín.: &nbsp;{{
+            tempSelection
+              ? weatherCard.temperature.celsius.min.value
+              : weatherCard.temperature.fahrenheit.min.value
+          }}º
+          <a
+            [ngClass]="{
+              'enabled-btn ': !tempSelection,
+              'disabled-btn no-click': tempSelection
+            }"
+          >
+            C
+          </a>
           |
-        <a  [ngClass]="{ 'enabled-btn ' : tempSelection, 'disabled-btn no-click' : !tempSelection}" >
-          F
-        </a>
-      </p>
-      <div [innerHTML]="getTemperature('min')"></div>
+          <a
+            [ngClass]="{
+              'enabled-btn ': tempSelection,
+              'disabled-btn no-click': !tempSelection
+            }"
+          >
+            F
+          </a>
+        </p>
+        <div [innerHTML]="getTemperature('min')"></div>
+      </div>
     </div>
   </div>
 </div>

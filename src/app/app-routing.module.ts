@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { AuthGuardService } from './core/services/auth-guard.service';
 import { PagesModule } from './pages/pages.module';
+import { MarsWeatherPanelComponent } from '../app/pages/mars-weather-panel/mars-weather-panel.component';
 
 const routes: Routes = [
   {

@@ -1,4 +1,5 @@
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
+@import "../../styles/mixins.scss";
 
 // redefine tag p para não herdar estilos do mat-card
 ::ng-deep.mat-typography .paragraph-customization {
@@ -9,18 +10,28 @@
 
 .card-principal {
   width: 654px;
-  height: 212px;
   display: flex;
   align-items: center;
   border-radius: 26px;
   background: rgba(62, 51, 51, 0.25);
+  padding: 30px 30px;
+
+  @include responsive(sm) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 20px;
+  }
 }
 
 .display-day,
 .max-temperature {
   font-weight: 700;
   font-size: 34px;
-  margin-right: 13px;
+
+  @include responsive(sm) {
+    font-size: 1.2rem;
+  }
 }
 
 .display-date,
@@ -28,17 +39,31 @@
   font-size: 14px;
   margin-bottom: 4px;
   margin-right: 8px;
+
+  @include responsive(sm) {
+    font-size: 0.75rem;
+  }
 }
 
 .calendar-section {
-  width: 195px;
-  height: 120px;
-  margin: 44px 54px 41px 32px;
+  width: 40%;
+
+  @include responsive(sm) {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+  }
 
   .calendar-icon-img {
     width: 42px;
     height: 42px;
-    margin-bottom: 16px;
+    margin: 0 10px;
+
+    @include responsive(sm) {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 8px;
+    }
   }
 
   .display-day {
@@ -48,6 +73,11 @@
     font-style: normal;
     line-height: normal;
     margin-bottom: 10px;
+
+    @include responsive(sm) {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
   }
 
   .display-date {
@@ -60,14 +90,26 @@
 }
 
 .temperature-section {
-  height: 127px;
+  width: 60%;
   display: flex;
   flex-direction: column;
+
+  @include responsive(sm) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+  }
 
   .thermometer-icon {
     width: 42px;
     height: 42px;
-    margin-bottom: 22px;
+    margin-right: 15px;
+
+    @include responsive(sm) {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   .max-temperature {
@@ -75,7 +117,7 @@
     font-family: Inter;
     font-style: normal;
     line-height: normal;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
   }
 
   .min-temperature {
@@ -86,11 +128,20 @@
   }
 }
 
+.wrapper-temperatures {
+  width: 100%;
+}
+
 .wrapper-max-temp,
 .wrapper-min-temp {
   display: flex;
   align-items: center;
   margin: 0;
+
+  @include responsive(sm) {
+    width: 200px;
+    margin: -10px;
+  }
 }
 
 .wrapper-max-temp img,
