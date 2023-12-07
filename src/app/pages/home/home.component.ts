@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit{
         768: {
           slidesPerView: 2,
         },
-        1024: {
+        1080: {
           slidesPerView: 3,
         },
       },

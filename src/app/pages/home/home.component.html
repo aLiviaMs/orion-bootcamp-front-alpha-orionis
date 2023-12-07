@@ -1,7 +1,7 @@
 <div class="home-wrapper moon-centered-large-background">
   <div class="mars-cards-container">
     <div class="greetings-panel" [@fadeInOut]="1">
-      <app-page-title class="title"
+      <app-page-title class="title card-title"
         [title]="'Olá,'"
         [highlight]="'explorador(a) Orion!'"
         >
@@ -11,7 +11,7 @@
 
     <div class="slider-carousel">
       <div class="mars-carousel slider-wrapper">
-        <swiper [config]="swiperHomeConfig" [@cardsAnimations]="1">
+        <swiper [config]="swiperHomeConfig" [@cardsAnimations]="1" class="swiper-container">
           <ng-template swiperSlide *ngFor="let card of cards">
             <app-card-home [card]="card" class="mars-cards" (buttonClick)="card.callback"></app-card-home>
           </ng-template>

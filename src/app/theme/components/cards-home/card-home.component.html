@@ -1,21 +1,18 @@
 <mat-card 
-  class="card"           
-  (mouseenter)="toggleBlur()" 
-  (mouseleave)="toggleBlur()"
+  class="card"
 >
   <img 
-    [@blueOut]="imgState"
     class="bg-image hover-zoom"
     class="header-image" 
     mat-card-image src="{{card.img}}" 
     alt="{{card.imgAlt}}"
   >
   <div class="content-wrapper">
-    <mat-card-content>
+    <mat-card-content class="text-wrapper">
       <mat-card-title class="mat-title">
         {{card.title}}
       </mat-card-title>
-      <span class="mat-subtitle">
+      <span class="mat-text">
        {{card.paragraph}}
       </span>
     </mat-card-content>

@@ -19,16 +19,6 @@ import { IHomeCard } from 'src/app/core/models/iHomeCard';
         transition('initial => final', animate('500ms ease-in')),
         transition('final => initial', animate('500ms ease-out'))
       ]),
-      trigger('blueOut', [
-        state('initial', style({
-          filter: "blur(2px)" 
-        })),
-        state('final', style({
-          filter: "blur(0px)" 
-        })),
-        transition('initial => final', animate('500ms ease-in')),
-        transition('final => initial', animate('500ms ease-out'))
-      ])
     ]
 })
 
@@ -36,7 +26,6 @@ export class CardHomeComponent {
     @Input() card!: IHomeCard;
     @Output() public buttonClick: EventEmitter<void> = new EventEmitter<void>();
     public buttonState = 'initial';
-    public imgState = 'initial';
 
     /**
      * Serve para modificar o estado da animação de cores do botão
@@ -44,14 +33,6 @@ export class CardHomeComponent {
      */
     toggleColor(): void {
       this.buttonState = (this.buttonState === 'initial') ? 'final' : 'initial';
-    }
-
-    /**
-     * Serve para modificar o estado de animação da imagem
-     * Inicial setado com blur 2x e final sem blur
-     */
-    toggleBlur(): void {
-      this.imgState = (this.imgState === 'initial') ? 'final' : 'initial';
     }
     
     /**
