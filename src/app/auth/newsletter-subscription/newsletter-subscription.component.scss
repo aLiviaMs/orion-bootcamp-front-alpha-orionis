@@ -9,33 +9,61 @@
   height: 100vh;
 }
 
-.text-info {
-  width: 500px;
+.text-info h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
 
-  h1 {
-    font-size: 35px;
-    margin-bottom: 8px;
-    margin-left: 0px;
+  @include responsive(lg) {
+    font-size: 2.6rem;
+    margin-bottom: 1.4rem;
   }
 
-  span {
-    font-size: 13px;
-    margin-left: -1px;
+  @include responsive(md) {
+    font-size: 2.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  @include responsive(sm) {
+    font-size: 2.2rem;
+    margin-bottom: 0.3rem;
   }
 }
 
+.text-info span {
+  font-size: 1.2rem;
+  line-height: normal;
+  font-weight: normal;
+
+  @include responsive(lg) {
+    font-size: 1.0rem;
+  }
+
+  @include responsive(md) {
+    font-size: 0.9rem;
+  }
+
+  @include responsive(sm) {
+    font-size: 0.8rem;
+  }
+}
+
+::ng-deep mat-form-field,
+.errors {
+  width: 100%;
+  margin-top: 0.7rem;
+}
+
+.text-info,
 .container-form {
-  width: 500px;
+  width: 40%;
+  max-width: 820px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2.5rem;
-}
+  margin-bottom: 0.8rem;
 
-.email-input {
-  width: 100%;
-  margin-bottom: 0.5rem;
+  @include responsive(lg) {
+    width: 90%;
+  }
 }
 
 // Botão de enviar/inscrever-se

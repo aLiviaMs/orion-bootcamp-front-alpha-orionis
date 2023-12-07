@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit{
       img: "../../../assets/images/mars-rockets.jpg", 
       imgAlt:"mars-rocket.jpeg",
       className: "community",
-      callback: () => this.openNewTab("https://discord.com/invite/kCXUACrC3B"),
+      callback: () => this.openNewTab("https://2no.co/exporion-discord"),
     },
     {
       title: "Notícias de Marte", 

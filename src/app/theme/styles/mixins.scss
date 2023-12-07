@@ -1,6 +1,5 @@
 // Mixin para estilos comuns de botões
 @mixin common-button-styles {
-  width: 500px;
   border-radius: 0.35rem;
   font-size: 0.8rem;
   font-weight: 700;
@@ -9,6 +8,14 @@
   padding: 25px 0;
 }
 
+/*
+ * Mixin que insere media queries em um bloco, podendo ter 4 entradas:
+ *
+ * - sm: medida para larguras pequenas
+ * - md: medida para larguras médias como tablets
+ * - lg: medida para larguras maiores como tablets na orientação paisagem
+ * - valor numérico: pode passar uma medida numérica na escala de pixels, rem etc
+ */
 @mixin responsive($size-breakpoint: none, $is-min: false) {
   $width: 0px;
 

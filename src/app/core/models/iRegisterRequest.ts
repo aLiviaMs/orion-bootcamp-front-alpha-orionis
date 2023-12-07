@@ -3,5 +3,4 @@ export interface IRegisterRequestBody {
   password: string;
   confirmPassword: string;
   isSubscribed: boolean;
-  isVerified: boolean;
 }

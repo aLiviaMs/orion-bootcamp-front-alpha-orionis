@@ -1,74 +1,71 @@
 <div class="moon-right-large-background">
-  <section class="container">
+  <section class="login-wrapper">
     <section class="display-text">
       <h1>Bem vindo(a)!</h1>
       <p>Por favor, preencha os campos abaixo para logar.</p>
     </section>
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-      <section class="input-section">
-        <mat-form-field appearance="outline" class="email-input">
-          <mat-label>E-mail</mat-label>
-          <input type="email" matInput formControlName="email" />
-          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
-            E-mail é obrigatório
-          </mat-error>
-          <mat-error *ngIf="loginForm.get('email')?.hasError('email')"
-            >E-mail incorreto</mat-error
-          >
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Senha</mat-label>
-          <input
-            matInput
-            [type]="hide ? 'password' : 'text'"
-            formControlName="password"
-          />
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="input-section">
+      <mat-form-field appearance="outline" class="email-input">
+        <mat-label>E-mail</mat-label>
+        <input type="email" matInput formControlName="email" />
+        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+          E-mail é obrigatório
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.hasError('email')"
+          >E-mail incorreto</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+        />
 
-          <button
-            type="button"
-            mat-icon-button
-            matSuffix
-            (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide"
-            class="outline-btn"
-          >
-            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-          </button>
-          <mat-error *ngIf="loginForm.get('password')?.hasError('required')"
-            >Senha é obrigatória</mat-error
-          >
-        </mat-form-field>
-        <p *ngIf="errorMessage">{{ errorMessage }}</p>
-        <section class="login-section">
-          <mat-checkbox formControlName="isRememberEnabled"
-            >Lembrar de mim</mat-checkbox
-          >
-          <a
-            (click)="forgotPassword()"
-            (keydown)="forgotPassword()"
-            tabindex="0"
-            >Esqueceu a senha?</a
-          >
-        </section>
-        <section class="button-section">
-          <button
-            mat-flat-button
-            color="primary"
-            class="btn-enter"
-            type="submit"
-            [disabled]="!loginForm.valid"
-            [class.valid-button-color]="loginForm.valid"
-          >
-            Entrar
-          </button>
-        </section>
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+          class="outline-btn"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')"
+          >Senha é obrigatória</mat-error
+        >
+      </mat-form-field>
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+      <section class="login-section">
+        <mat-checkbox formControlName="isRememberEnabled" class="checkbox"
+          >Lembrar de mim</mat-checkbox
+        >
+        <a class="forgotPassword" (click)="forgotPassword()" (keydown)="forgotPassword()" tabindex="0"
+          >Esqueceu a senha?</a
+        >
+      </section>
+      <section class="button-section">
+        <button
+          mat-flat-button
+          color="primary"
+          class="btn-enter"
+          type="submit"
+          [disabled]="!loginForm.valid"
+          [class.valid-button-color]="loginForm.valid"
+        >
+          Entrar
+        </button>
       </section>
     </form>
     <div class="goBackDiv">
       <span>
         Não tem uma conta?
-        <a class="go-back-sign-up" [routerLink]="'/auth/sign-up'"> Cadastre-se </a>
+        <a class="go-back-sign-up" [routerLink]="'/auth/sign-up'">
+          Cadastre-se
+        </a>
       </span>
     </div>
   </section>
