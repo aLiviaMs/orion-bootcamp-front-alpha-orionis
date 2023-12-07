@@ -2,43 +2,61 @@
 
 @import '../../styles/colors.scss';
 
+@import "../../styles/mixins.scss";
+
 .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 450px;
-    width: 380px;
-    margin: 20px;
+    height: 80vh;
+    width: 70vw;
+    min-width: 250px;
+    min-height: 450px;
+    max-width: 1000px;
+    max-height: 1200px;
+    margin: 2vw;
     color: $black;
     border-radius: 10px;
     background-color: $white;
-    box-shadow: 1px 1px 10px 5px $black;
-    margin-top: -10px;
+    box-shadow: 0px 0px 20px 0px $black;
+}
+
+.header-image {
     position: relative;
-    z-index: 1;
+    height: 80%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70%;
+    line-height: normal;
+}
+
+.content-wrapper>.mat-mdc-card-content>.mat-title {
+    font-size: clamp(20px, 2vw, 50px);
+    margin-bottom: 1vh;
+}
+
+.content-wrapper>.mat-mdc-card-content>.mat-text {
+    font-size: clamp(17px, 1.5vw, 40px);
+}
+
+.text-wrapper {
+    color: black;
 }
 
 .btn-enter {
     width: 100%;
     border: none;
-    padding: 1.2rem 0.3rem;
+    padding: clamp(14px, 1.5vw, 40px);
     border-radius: 5px;
     box-shadow: 0px 0px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 0.8rem;
+    font-size: clamp(14px, 1.5vw, 40px);
     font-weight: 700;
     text-transform: uppercase;
     color: $white;
     cursor: pointer;
-}
-
-.header-image {
-    position: relative;
-    height: 250px;
-    width: 380px;
-}
-
-.content-wrapper {
-    justify-content: space-around;
 }

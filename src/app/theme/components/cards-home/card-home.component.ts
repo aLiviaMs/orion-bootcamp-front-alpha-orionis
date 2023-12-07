@@ -26,7 +26,6 @@ export class CardHomeComponent {
     @Input() card!: IHomeCard;
     @Output() public buttonClick: EventEmitter<void> = new EventEmitter<void>();
     public buttonState = 'initial';
-    public imgState = 'initial';
 
     /**
      * Serve para modificar o estado da animação de cores do botão

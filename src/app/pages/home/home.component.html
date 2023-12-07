@@ -1,20 +1,23 @@
 <div class="home-wrapper moon-centered-large-background">
-    <div class="mars-cards-container">
-        <div class="greetings-panel" [@fadeInOut]="1">
-            <app-page-title 
-                [title]="'Olá,'"
-                [subtitle]="'Seja bem vindo(a)! O que veremos hoje?'"
-                [highlight]="'explorador(a) Orion!'"
-            >
-            </app-page-title>
-            <app-logout></app-logout> 
-        </div>
-        <div [@cardsAnimations]="1">
-            <div class="mars-cards" >
-                <div *ngFor = "let card of cards" >
-                    <app-card-home [card]="card" (buttonClick)="card.callback"></app-card-home>
-                </div>
-            </div>
-        </div>
+  <div class="mars-cards-container">
+    <div class="greetings-panel" [@fadeInOut]="1">
+      <app-page-title class="title card-title"
+        [title]="'Olá,'"
+        [highlight]="'explorador(a) Orion!'"
+        >
+      </app-page-title>
+      <app-logout class="logout-btn"></app-logout> 
     </div>
+
+    <div class="slider-carousel">
+      <div class="mars-carousel slider-wrapper">
+        <swiper [config]="swiperHomeConfig" [@cardsAnimations]="1" class="swiper-container">
+          <ng-template swiperSlide *ngFor="let card of cards">
+            <app-card-home [card]="card" class="mars-cards" (buttonClick)="card.callback"></app-card-home>
+          </ng-template>
+        </swiper>
+      </div>
+      <div class="swiper-pagination swiper-pagination-clickable"></div>
+    </div>
+  </div>
 </div>

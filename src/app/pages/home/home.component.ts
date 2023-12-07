@@ -1,12 +1,22 @@
 import { animate, query, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import { IHomeCard } from 'src/app/core/models/iHomeCard';
+import SwiperCore, {
+  Pagination,
+  SwiperOptions
+} from 'swiper';
+import { SwiperComponent } from 'swiper/angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('cardsAnimations', [
       transition('void => *', [
@@ -26,12 +36,14 @@ import { IHomeCard } from 'src/app/core/models/iHomeCard';
   ],
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit{
+  @ViewChild(SwiperComponent) private sliderComponent?: SwiperComponent;
+  public swiperHomeConfig!: SwiperOptions
   cards: IHomeCard[] = [
     { 
       title: "Meteorologia em Marte", 
       paragraph: "Veja a previsão do tempo em Marte ao vivo! Descubra como são as temperaturas no planeta vermelho", 
-      img: "../../../assets/images/mars-ground.jpeg", 
+      img: "../../../assets/images/mars-ground.jpg", 
       imgAlt:"mars-terrain.jpeg",
       className: "forecast",
       callback: () => this.openNewTab('/pages/mars-weather-panel'),
@@ -39,7 +51,7 @@ export class HomeComponent {
     { 
       title: "Nossa comunidade", 
       paragraph: "Entre em nossa comunidade e fique por dentro de todos os acontecimentos espaciais", 
-      img: "../../../assets/images/mars-rockets.jpeg", 
+      img: "../../../assets/images/mars-rockets.jpg", 
       imgAlt:"mars-rocket.jpeg",
       className: "community",
       callback: () => this.openNewTab("https://2no.co/exporion-discord"),
@@ -47,13 +59,46 @@ export class HomeComponent {
     {
       title: "Notícias de Marte", 
       paragraph: "Ansioso por notícias? Entre no seu portal de notícias da Via Láctea!", 
-      img: "../../../assets/images/mars-hover.jpeg", 
+      img: "../../../assets/images/mars-hover.jpg", 
       imgAlt:"mars-hover.jpeg",
       className: "blog",
-      callback: () => this.openNewTab('https://2no.co/exporion-blog'),
-    }
-  ]
-  constructor(private router: Router) {}
+      callback: () => this.openNewTab('https://exporion.blogspot.com/'),
+    },
+  ]  
+
+  /**
+   * Inicializa o swiper ao entrar na pagina
+   * SwiperCore, passado para ele a variavel Pagination, para ser criada a paginacao dos cards
+   * swiperHomeConifg, usado para configurar o slider para ser responsivo
+   */
+  public ngOnInit(): void {
+    SwiperCore.use([Pagination]);
+    this.swiperHomeConfig = {
+      slidesPerView: 3,
+      breakpoints: {
+        50: {
+          slidesPerView: 1,
+        },
+        500: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1080: {
+          slidesPerView: 3,
+        },
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,  
+        dynamicBullets: true,
+        dynamicMainBullets: 2,
+      },
+      breakpointsBase: "window",
+    };
+  }
+
   /**
    * Usado em qualquer botão, para redirecionar o usuário para 
    * alguma página fora do aplicativo por exemplo http://www.google.com
