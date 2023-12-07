@@ -42,7 +42,7 @@ export class HomeComponent {
       img: "../../../assets/images/mars-rockets.jpeg", 
       imgAlt:"mars-rocket.jpeg",
       className: "community",
-      callback: () => this.openNewTab("https://discord.com/invite/kCXUACrC3B"),
+      callback: () => this.openNewTab("https://2no.co/exporion-discord"),
     },
     {
       title: "Notícias de Marte", 
@@ -50,7 +50,7 @@ export class HomeComponent {
       img: "../../../assets/images/mars-hover.jpeg", 
       imgAlt:"mars-hover.jpeg",
       className: "blog",
-      callback: () => this.openNewTab('https://exporion.blogspot.com/'),
+      callback: () => this.openNewTab('https://2no.co/exporion-blog'),
     }
   ]
   constructor(private router: Router) {}
