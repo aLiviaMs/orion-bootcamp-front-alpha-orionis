@@ -1,7 +1,7 @@
 <div class="carousel">
   <img class="arrow-left swiper-button-prev" src="../../../../assets/images/arrow.png" alt="" />
   <swiper [config]="config">
-    <ng-template swiperSlide *ngFor="let weatherCard of weatherCards">
+    <ng-template swiperSlide *ngFor="let weatherCard of weatherCards" class="temperature-slide">
       <p class="sol">SOL {{ weatherCard.solDate }}</p>
       <p class="date">{{ weatherCard.terrestrialDate | datePipe }}</p>
       <img src="../../../../assets/images/rectangle.png" alt="" />
