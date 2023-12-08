@@ -101,17 +101,17 @@ a {
 .forgotPassword {
   font-size: 1rem;
   font-weight: 500;
-  
+
   @include responsive(sm) {
     font-size: 0.7rem;
   }
 }
 
-::ng-deep .mdc-checkbox{
+::ng-deep .mdc-checkbox {
   padding-left: 0 !important;
 }
 
-::ng-deep .mdc-checkbox .mdc-checkbox__background{
+::ng-deep .mdc-checkbox .mdc-checkbox__background {
   left: 0 !important;
 }
 
