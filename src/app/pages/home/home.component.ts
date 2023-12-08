@@ -77,22 +77,7 @@ export class HomeComponent implements OnInit {
     SwiperCore.use([Pagination]);
     this.swiperHomeConfig = {
       slidesPerView: 1,
-      breakpoints: {
-        480: {
-          slidesPerView: 1,
-          centeredSlides: true,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        992: {
-          slidesPerView: 3,
-          height: 450,
-          spaceBetween: 35,
-        },
-      },
-
+      spaceBetween: 20,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -100,6 +85,18 @@ export class HomeComponent implements OnInit {
         dynamicMainBullets: 2,
       },
       breakpointsBase: 'window',
+      breakpoints: {
+        480: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        992: {
+          slidesPerView: 3,
+          spaceBetween: 35,
+        },
+      },
     };
   }
 
