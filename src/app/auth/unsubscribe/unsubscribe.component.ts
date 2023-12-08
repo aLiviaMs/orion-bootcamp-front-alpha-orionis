@@ -54,7 +54,10 @@ export class UnsubscribeComponent implements OnInit {
           title: 'Sucesso',
           message: response.data.message,
           feedback: 'success',
-          onClick: () => this.goBack()
+        })
+        .afterClosed()
+        .subscribe(() => {
+          this.goBack();
         });
       })
       .catch((error) => {
@@ -62,7 +65,10 @@ export class UnsubscribeComponent implements OnInit {
           title: 'Falha!',
           message: error,
           feedback: 'error',
-          onClick: () => this.goBack()
+        })
+        .afterClosed()
+        .subscribe(() => {
+          this.goBack();
         });
       })
       .finally(() => {
