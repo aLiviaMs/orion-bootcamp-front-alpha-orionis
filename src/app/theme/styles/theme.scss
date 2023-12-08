@@ -205,7 +205,9 @@ section {
   }
 
   .mat-mdc-unelevated-button.mat-primary:disabled {
-    background-color: #979797;
-    color: #171717;
+    background-color: var(--foundation-primary, #979797);
+    color: $black;
+    text-transform: uppercase;
+    opacity: 0.3;
   }
 }
