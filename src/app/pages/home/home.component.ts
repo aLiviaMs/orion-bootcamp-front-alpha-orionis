@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
     {
       title: 'Notícias de Marte',
       paragraph:
-        'Ansioso por notícias? Entre no seu portal de notícias da Via Láctea!',
+        'Ansioso por notícias? Entre no seu portal de notícias da Via Láctea, caro explorador!',
       img: '../../../assets/images/mars-hover.jpg',
       imgAlt: 'mars-hover.jpeg',
       className: 'blog',
@@ -80,15 +80,19 @@ export class HomeComponent implements OnInit {
       breakpoints: {
         480: {
           slidesPerView: 1,
+          centeredSlides: true,
         },
         768: {
           slidesPerView: 2,
+          spaceBetween: 20,
         },
         992: {
           slidesPerView: 3,
+          height: 450,
+          spaceBetween: 35,
         },
       },
-      // spaceBetween: 30,
+
       pagination: {
         el: '.swiper-pagination',
         clickable: true,

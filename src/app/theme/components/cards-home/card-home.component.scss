@@ -14,16 +14,26 @@
   box-shadow: 0px 0px 20px 0px $black;
 
   @include responsive(lg) {
-    height: 800px;
+    height: 550px;
   }
 
   @include responsive(md) {
-    height: 600px;
+    height: 450px;
   }
 
   @include responsive(sm) {
     height: 400px;
     margin: 0 20px;
+  }
+}
+
+.cards-web {
+  @include responsive(lg) {
+    display: flex;
+  }
+
+  @include responsive(md) {
+    display: none;
   }
 }
 

@@ -12,12 +12,21 @@
   height: 100vh;
 }
 
+.swiper-container {
+  @include responsive(lg) {
+    display: none;
+  }
+
+  @include responsive(md) {
+    display: block;
+  }
+}
+
 .mars-cards-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100vw;
-  margin: 20px;
 }
 
 .greetings-panel {
