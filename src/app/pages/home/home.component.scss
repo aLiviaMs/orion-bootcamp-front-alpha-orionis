@@ -1,6 +1,6 @@
-@import '../../theme/styles/theme.scss';
+@import "../../theme/styles/theme.scss";
 
-@import '../../theme/styles/colors.scss';
+@import "../../theme/styles/colors.scss";
 
 @import "../../theme/styles/mixins.scss";
 
@@ -9,81 +9,67 @@
 @import "swiper/css/pagination";
 
 .moon-centered-large-background {
-    height: 100vh
+  height: 100vh;
 }
 
 .mars-cards-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+
+  @include responsive(md) {
+    padding: 40px;
+  }
+
+  @include responsive(sm) {
+    padding: 20px;
+  }
 }
 
 .greetings-panel {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 4vh 6vw 1vh 6vw
-}
-
-.title>div>h1 {
-    font-size: clamp(18px, 2vw, 55px)
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 60px;
 }
 
 .logout-btn {
-    display: flex;
-    align-items: center;
-    margin-left: 1vw
-}
-
-.logout-btn>.logout-button>img {
-    height: calc(2vw + 10px);
-    width: calc(2vw + 10px)
-}
-
-.swiper-container {
-    width: 200vw;
+  display: flex;
+  align-items: center;
 }
 
 .mars-cards {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 @keyframes zoomIn {
-    0% {
-        background-size: 30%
-    }
+  0% {
+    background-size: 30%;
+  }
 
-    100% {
-        background-size: 100%
-    }
+  100% {
+    background-size: 100%;
+  }
 }
 
 .moon-centered-large-background {
-    animation: 1s ease-out 0s 1 zoomIn;
-}
-
-.swiper-slide {
-    padding-top: 1vh;
+  animation: 1s ease-out 0s 1 zoomIn;
 }
 
 .mars-carousel {
-    display: flex;
-    align-items: center;
-    //box-sizing: content-box;
-    //margin-top: 5vh;
-    width: 100vw;
-    height: 80vh;
+  display: flex;
+  align-items: center;
 }
 
 .swiper-pagination-bullet-active {
-    background-color: $primary-500;
+  background-color: $primary-500;
 }
 
 .swiper-pagination-bullet {
-    background-color: $primary-300;
+  background-color: $primary-300;
 }

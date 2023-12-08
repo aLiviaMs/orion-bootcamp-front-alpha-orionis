@@ -1,62 +1,68 @@
-@import '../../styles/theme.scss';
+@import "../../styles/theme.scss";
 
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
 
 @import "../../styles/mixins.scss";
 
 .card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: $black;
+  border-radius: 10px;
+  background-color: $white;
+  box-shadow: 0px 0px 20px 0px $black;
+
+  height: 500px !important;
+}
+
+.cards-web {
+  @include responsive(lg) {
     display: flex;
-    flex-direction: column;
-    height: 80vh;
-    width: 70vw;
-    min-width: 250px;
-    min-height: 450px;
-    max-width: 1000px;
-    max-height: 1200px;
-    margin: 2vw;
-    color: $black;
-    border-radius: 10px;
-    background-color: $white;
-    box-shadow: 0px 0px 20px 0px $black;
+  }
+
+  @include responsive(md) {
+    display: none;
+  }
 }
 
 .header-image {
-    position: relative;
-    height: 80%;
-    width: 100%;
-    object-fit: cover;
+  position: relative;
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
 }
 
 .content-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 70%;
-    line-height: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70%;
+  line-height: normal;
 }
 
-.content-wrapper>.mat-mdc-card-content>.mat-title {
-    font-size: clamp(20px, 2vw, 50px);
-    margin-bottom: 1vh;
+.content-wrapper > .mat-mdc-card-content > .mat-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
-.content-wrapper>.mat-mdc-card-content>.mat-text {
-    font-size: clamp(17px, 1.5vw, 40px);
+.content-wrapper > .mat-mdc-card-content > .mat-text {
+  font-size: 1rem;
 }
 
 .text-wrapper {
-    color: black;
+  color: black;
 }
 
 .btn-enter {
-    width: 100%;
-    border: none;
-    padding: clamp(14px, 1.5vw, 40px);
-    border-radius: 5px;
-    box-shadow: 0px 0px;
-    font-size: clamp(14px, 1.5vw, 40px);
-    font-weight: 700;
-    text-transform: uppercase;
-    color: $white;
-    cursor: pointer;
+  text-align: center;
+  width: 100%;
+  border: none;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px;
+  text-transform: uppercase;
+  color: $white;
+  cursor: pointer;
 }

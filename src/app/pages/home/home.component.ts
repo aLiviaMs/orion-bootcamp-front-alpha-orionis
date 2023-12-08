@@ -1,15 +1,14 @@
-import { animate, query, state, style, transition, trigger } from '@angular/animations';
 import {
-  Component,
-  OnInit,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
+  animate,
+  query,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { IHomeCard } from 'src/app/core/models/iHomeCard';
-import SwiperCore, {
-  Pagination,
-  SwiperOptions
-} from 'swiper';
+import SwiperCore, { Pagination, SwiperOptions } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
 
 @Component({
@@ -20,10 +19,11 @@ import { SwiperComponent } from 'swiper/angular';
   animations: [
     trigger('cardsAnimations', [
       transition('void => *', [
-        query('.mars-cards', style({ transform: 'translateY(100%)'})),
-        query('.mars-cards',
-            animate('1000ms', style({ transform: 'translateY(0)'}))
-        )
+        query('.mars-cards', style({ transform: 'translateY(100%)' })),
+        query(
+          '.mars-cards',
+          animate('1000ms', style({ transform: 'translateY(0)' }))
+        ),
       ]),
     ]),
     trigger('fadeInOut', [
@@ -35,36 +35,38 @@ import { SwiperComponent } from 'swiper/angular';
     ]),
   ],
 })
-
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   @ViewChild(SwiperComponent) private sliderComponent?: SwiperComponent;
-  public swiperHomeConfig!: SwiperOptions
+  public swiperHomeConfig!: SwiperOptions;
   cards: IHomeCard[] = [
-    { 
-      title: "Meteorologia em Marte", 
-      paragraph: "Veja a previsão do tempo em Marte ao vivo! Descubra como são as temperaturas no planeta vermelho", 
-      img: "../../../assets/images/mars-ground.jpg", 
-      imgAlt:"mars-terrain.jpeg",
-      className: "forecast",
+    {
+      title: 'Meteorologia em Marte',
+      paragraph:
+        'Veja a previsão do tempo em Marte ao vivo! Descubra como são as temperaturas no planeta vermelho',
+      img: '../../../assets/images/mars-ground.jpg',
+      imgAlt: 'mars-terrain.jpeg',
+      className: 'forecast',
       callback: () => this.openNewTab('/pages/mars-weather-panel'),
     },
-    { 
-      title: "Nossa comunidade", 
-      paragraph: "Entre em nossa comunidade e fique por dentro de todos os acontecimentos espaciais", 
-      img: "../../../assets/images/mars-rockets.jpg", 
-      imgAlt:"mars-rocket.jpeg",
-      className: "community",
-      callback: () => this.openNewTab("https://2no.co/exporion-discord"),
+    {
+      title: 'Nossa comunidade',
+      paragraph:
+        'Entre em nossa comunidade e fique por dentro de todos os acontecimentos espaciais',
+      img: '../../../assets/images/mars-rockets.jpg',
+      imgAlt: 'mars-rocket.jpeg',
+      className: 'community',
+      callback: () => this.openNewTab('https://2no.co/exporion-discord'),
     },
     {
-      title: "Notícias de Marte", 
-      paragraph: "Ansioso por notícias? Entre no seu portal de notícias da Via Láctea!", 
-      img: "../../../assets/images/mars-hover.jpg", 
-      imgAlt:"mars-hover.jpeg",
-      className: "blog",
+      title: 'Notícias de Marte',
+      paragraph:
+        'Ansioso por notícias? Entre no seu portal de notícias da Via Láctea, caro explorador!',
+      img: '../../../assets/images/mars-hover.jpg',
+      imgAlt: 'mars-hover.jpeg',
+      className: 'blog',
       callback: () => this.openNewTab('https://exporion.blogspot.com/'),
     },
-  ]  
+  ];
 
   /**
    * Inicializa o swiper ao entrar na pagina
@@ -74,37 +76,38 @@ export class HomeComponent implements OnInit{
   public ngOnInit(): void {
     SwiperCore.use([Pagination]);
     this.swiperHomeConfig = {
-      slidesPerView: 3,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        dynamicBullets: true,
+        dynamicMainBullets: 2,
+      },
+      breakpointsBase: 'window',
       breakpoints: {
-        50: {
-          slidesPerView: 1,
-        },
-        500: {
+        480: {
           slidesPerView: 1,
         },
         768: {
           slidesPerView: 2,
         },
-        1080: {
+        992: {
           slidesPerView: 3,
+          spaceBetween: 35,
         },
       },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,  
-        dynamicBullets: true,
-        dynamicMainBullets: 2,
-      },
-      breakpointsBase: "window",
     };
   }
 
   /**
-   * Usado em qualquer botão, para redirecionar o usuário para 
+   * Usado em qualquer botão, para redirecionar o usuário para
    * alguma página fora do aplicativo por exemplo http://www.google.com
    * @param url Stirng contendo a url completa do site destino
    */
   public openNewTab(url: string): void {
-    url.includes('/pages/mars-weather-panel') ? window.open(url, "_self") : window.open(url, '_blank') 
+    url.includes('/pages/mars-weather-panel')
+      ? window.open(url, '_self')
+      : window.open(url, '_blank');
   }
 }
